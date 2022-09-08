@@ -1,0 +1,7 @@
+.App {
+  text-align: center;
+}
+
+* {
+  background: hsla(184, 85%, 63%, 1); background: linear-gradient(45deg, hsla(184, 85%, 63%, 1) 0%, hsla(240, 46%, 76%, 1) 50%, hsla(319, 72%, 75%, 1) 100%); background: -moz-linear-gradient(45deg, hsla(184, 85%, 63%, 1) 0%, hsla(240, 46%, 76%, 1) 50%, hsla(319, 72%, 75%, 1) 100%); background: -webkit-linear-gradient(45deg, hsla(184, 85%, 63%, 1) 0%, hsla(240, 46%, 76%, 1) 50%, hsla(319, 72%, 75%, 1) 100%); filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#4FE6F1", endColorstr="#A6A6DE", GradientType=1 );
+}

@@ -1,0 +1,376 @@
+body{
+  background: radial-gradient(50% 50% at 50% 50%,rgb(33 18 74 / 80%) 0,hsl(0deg 4% 6%) 100%);
+}
+a {
+  text-decoration: auto !important;
+}
+span, h1 {
+  font-family: Pixeloid Sans !important;
+  font-weight: 600 !important;
+  color: #FFFFFF;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+  }
+  .Navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+  }
+  .logo .dao-logo {
+    font-family: "Eight Bit Dragon" !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: blueviolet;
+    transition: all .6s ease;
+  }
+  .Navbar .dao-logo-text {
+    font-family: Pixeloid Sans;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: white;
+  }
+  .connect-btn, .connect-address-btn {
+    background-color: #6C5DD3 !important;
+    border-radius: 19px!important;
+    box-shadow: none!important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    text-align: center !important;
+    color: #FFFFFF !important;
+    text-transform: none!important;
+    font-family: Pixeloid Sans !important;
+  }
+  .connect-address-btn {
+    width: 148px !important;
+  }
+  .connect-btn:hover , .connect-address-btn:hover {
+    cursor: pointer;
+  }
+  .wallet {
+    display: flex;
+    flex-direction: column;
+  }
+  .balance {
+    font-family: Pixeloid Sans !important;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .nav-center-button {
+    font-family: Pixeloid Sans !important;
+    font-weight: 600 !important;
+    padding: 11px;
+    border: 1px solidrgba(0, 0, 0, 0.12) !important;
+    color: white !important;
+
+  }
+  .mid-btn {
+    justify-content: center;
+    display: flex;
+    border: 1px solid white;
+    border-radius: 2px;
+    
+  }
+  #mid-btn-two {
+    border-right: 1px solid;
+    border-radius: 0px;
+    color: white !important;
+  }
+  #mid-btn-one {
+    padding: 19px 7px !important;
+    border-right: 1px solid;
+    border-radius: 0px;
+    color: white !important;
+
+  }
+  #mid-btn-one:hover , #mid-btn-two:hover{
+    border-right: 1px solid white !important;
+  }
+  .governance-overview {
+    font-family: Pixeloid Sans !important;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+ .box-2, .box-3 {
+    background-color: #0b0a0a;
+    height: 30vh;
+    border-radius: 20px;
+    display: flex ;
+    margin: 0 15px;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    text-align: center;
+  }
+  .box-1 {
+    background-color: #0b0a0a;
+    height: 30vh;
+    border-radius: 20px;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .box-1:hover {
+    background: #2c19a4;
+    transition: all .3s ease-in-out;
+}
+.box-2:hover {
+    background: #731e90;
+    transition: all .3s ease-in-out;
+}
+
+.box-3:hover,.box-1:hover ,.box-2:hover {
+  background: linear-gradient(46deg, black, #8d65b6de);
+    transition: all .3s ease-in-out;
+}
+.box-1:hover span, .box-2:hover span, .box-3:hover span {
+  color: #fff;
+    transition: all .3s ease-in-out;
+}
+  .proposal-container {
+    margin-top: 10vh;
+    padding: 0 10rem;
+   
+  }
+  .create-proposals {
+    padding: 30px 20px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 50%;
+  }
+  #proposal-description {
+    border: 0.9px;
+    border-radius: 12px;
+    width: 100vh;
+    height: 20vh;
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Pixeloid Sans';
+    background: #3B3B3B;
+  }
+  #proposal-description:focus-visible {
+    border: none !important;
+  }
+  .create-heading {
+    font-size:25px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    text-align: center;
+    display: flex;
+    justify-content:center
+    
+  }
+  .progressBar {
+    height: 10% !important;
+    margin-top: 10px;
+  }
+  .created-with-bar {
+    display: flex;
+    flex-direction: column;
+  }
+  .proposal-number {
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  .proposal-status {
+    height: 250px;
+    background: #FFFF;
+    border-radius: 15px;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    flex-direction: column !important;
+    padding: 0 !important;
+  }
+  .proposal-status:hover {
+    background: linear-gradient(46deg, black, #8d65b6de);
+    transition: all .3s ease-in-out;
+  }
+  .proposal-status:hover span {
+    color: white;
+  }
+  .view-proposal-btn {
+    background-color: #6C5DD3 !important;
+    border-radius: 19px!important;
+    box-shadow: none!important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    text-align: center !important;
+    color: #FFFFFF !important;
+    text-transform: none!important;
+    font-family: Pixeloid Sans !important;
+    width: fit-content;
+    margin: 0 auto !important;
+    border: 1 px solid pink  !important;
+  }
+  .proposal-progressBar {
+    width: 55vh !important;
+    margin: 0 auto !important;
+  }
+  #proposal-list {
+    margin: 20px 15px;
+  }
+  @media (min-width: 1920px) and (max-width: 2560px)  {
+    .proposal-container {
+      padding: 0 15rem;
+     
+    }
+    .box-1, .box-2, .box-3 {
+      height: 22vh;
+   }
+  }
+
+  .proposal-details {
+    padding: 2rem 20rem;
+  }
+  .proposal-list-container {
+    display: flex;
+    justify-content: center;
+    align-items:center; 
+  }
+  .proposal-box .left-content {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .proposal-detail-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+}
+  .proposal-box {
+    height: 30vh;
+    background: #FFFFFF;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+.proposal-heading {
+  font-size: 17px;
+}
+   .view-all-proposal {
+    background-color: transparent !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    font-family: Pixeloid Sans !important;
+    padding: 6px 20px !important;
+    border-radius:15px !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+}
+.vote-percentage {
+  margin: 0px 0 25px 0px;
+}
+.vote-percentage .for-yes {
+  padding: 20px 0;
+}
+
+
+#activeStatus {
+  color: #FFC300;
+}
+#pendingStatus {
+  color:#4903EF ;
+}
+.defeatedStatus {
+  color: red;
+}
+.succeededStatus {
+  color: #00ff00;
+}
+.Status {
+  color: black;
+}
+ .yes-vote {
+  filter: grayscale(1);
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  border-radius: 7px;
+}
+.no-vote {
+  filter: grayscale(1);
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  margin-left: 20px;
+  border-radius: 6px;
+
+}
+.yes-vote:hover, .no-vote:hover {
+  filter: none;
+}
+.join-members {
+  background-color: transparent !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  font-family: Pixeloid Sans !important;
+  padding: 6px 20px !important;
+  border-radius:15px !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+}
+.member-list-container {
+  width: 80% !important;
+  margin: auto;
+}
+.Toastify__toast-body {
+  font-family: Pixeloid Sans !important;
+
+}
+/* membersList */
+.members-header {
+  font-size:25px;
+  font-weight: 600;
+}
+.member-box {
+  background: white;
+    padding: 20px 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.member-container {
+  margin-top: 20px;
+}
+.extraClass {
+  font-size: 11px !important;
+  pointer-events: auto !important;
+  font-family: Pixeloid Sans !important;
+}
+  extraClass:hover {
+ visibility: visible !important;
+ opacity: 1 !important;
+  }
+/* membersList */
+/* validation */
+.validation-error {
+  color: red;
+  font-size: 10px;
+  margin-top: 4px;
+  text-align: left;
+}
+/* validation */
+.not-available {
+  justify-content: center;
+  display: flex;
+  color: maroon;
+}
+.not-available-members {
+  margin: auto;
+  margin-top: 50px;
+  color: maroon;
+}
