@@ -24,6 +24,7 @@ const Proposal = () => {
   const [addressErr, setAddressErr] = useState(false)
   const [fundAmount, setFundAmount] = useState(0)
   const [receiptAddress, setReceiptAddress] = useState("")
+  const [correctAddress, setCorrectAddress] = useState(false)
   const [tokenContract, governanceContract, treasuryContract] = useContract()
 
   const successCreated = () => toast.success("Your proposal has been created.", {
@@ -92,8 +93,9 @@ const Proposal = () => {
     if (receiptAddress.length < 1) {
       setAddressErr(true)
     }
-    if (!Web3.utils.isAddress(receiptAddress)) {
-      setAddressErr(true)
+    if (receiptAddress.length > 1 && !Web3.utils.isAddress(receiptAddress)) {
+      setAddressErr(false)
+      setCorrectAddress(true)
     }
     try {
       console.log("Fund Amount: ", fundAmount)
@@ -131,10 +133,12 @@ const Proposal = () => {
     setFundAmount(event.target.value)
   }
   function HandleTreasuryAddress(event) {
-    console.log(event.target.value.length)
-    if (event.target.value.length < 1) {
+   
+     if (event.target.value.length < 1) {
       setAddressErr(true)
-    } else {
+     }
+    else {
+      setCorrectAddress(false)
       setAddressErr(false)
       setReceiptAddress(event.target.value)
     }
@@ -150,14 +154,15 @@ const Proposal = () => {
           : ""}
 
         <span style={{ marginTop: '20px' }}>Amount to Fund :</span>
-        <OutlinedInput style={{ marginTop: '10px' }} placeholder="Please enter the amount" inputProps={{ style: { fontFamily: 'nunito', color: 'white', borderColor: 'red' } }} className="fund-transfer" type="number" value={fundAmount} onChange={event => HandleFundAmount(event)} error={fundErr} />
+        <OutlinedInput style={{ marginTop: '10px' }} placeholder="Please enter the amount" inputProps={{ style: { fontFamily: 'Pixeloid Sans', color: 'white',  } }} className="fund-transfer" type="number" value={fundAmount} onChange={event => HandleFundAmount(event)} error={fundErr} />
         {fundErr ?
           <span className="validation-error">please add the amount.</span>
           : ""}
         <span style={{ marginTop: '20px' }}>Receipt Address :</span>
-        <OutlinedInput style={{ marginTop: '10px' }} placeholder="Please enter receipt address" onChange={event => HandleTreasuryAddress(event)} error={addressErr} />
+        <OutlinedInput style={{ marginTop: '10px' }} placeholder="Please enter receipt address" inputProps={{ style: { fontFamily: 'Pixeloid Sans', color: 'white',  } }} onChange={event => HandleTreasuryAddress(event)} className="fund-transfer" error={addressErr} />
         {addressErr ?
-          <span className="validation-error">please add the amount.</span>
+          <span className="validation-error">please insert the receipt address.</span>
+          : correctAddress ? <span className="validation-error">Invalid receipt address.</span>
           : ""}
         <Button sx={{ marginTop: 2 }} size="medium" className="connect-address-btn" type="submit" onClick={(event) => createProposal(event)}>Submit</Button>
         <ToastContainer

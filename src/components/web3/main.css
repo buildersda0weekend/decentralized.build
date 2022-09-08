@@ -141,6 +141,7 @@ span, h1 {
   .proposal-container {
     margin-top: 10vh;
     padding: 0 10rem;
+  margin-bottom: 50px;
    
   }
   .create-proposals {
@@ -368,9 +369,16 @@ span, h1 {
   justify-content: center;
   display: flex;
   color: maroon;
+  margin-bottom: 50px;
 }
 .not-available-members {
   margin: auto;
   margin-top: 50px;
   color: maroon;
+}
+.fund-transfer {
+  border: 0.1px solid #a57e92;
+}
+.fund-transfer:focus {
+  border: 0.1px solid white !important;
 }
