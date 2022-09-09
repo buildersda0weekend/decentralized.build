@@ -63,11 +63,11 @@ const Home = () => {
 
   return (
     <>
-      <Grid container className="proposal-container" >
+      <Grid container className="proposal-container"  >
         <Grid item xs={12} >
           <span className='governance-overview'>Governance Overview</span>
         </Grid>
-        <Grid xs={12} sm={12} md={6} lg={6} xl={6}>
+        <Grid xs={12} sm={12} md={6} lg={6} xl={6} >
           <div className="box-1">
             <div className='created-with-bar'>
               <span>Proposal Created</span>
@@ -102,7 +102,7 @@ const Home = () => {
             <span className='proposal-number'>{treasuryAddress}</span>
           </div>
         </Grid>
-        <Grid xs={4}>
+        <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
           <div className="box-2">
             <span>Treasury balance</span>
             <span className='proposal-number'>{treasuryFunds} ETH</span>

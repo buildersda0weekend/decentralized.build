@@ -105,7 +105,7 @@ span, h1 {
     height: 30vh;
     border-radius: 20px;
     display: flex ;
-    margin: 0 15px;
+    margin: 15px 15px;
     justify-content: center;
     flex-direction: column;
     text-align: center;
@@ -115,7 +115,7 @@ span, h1 {
     background-color: #0b0a0a;
     height: 30vh;
     border-radius: 20px;
-    margin: 0 15px;
+    margin: 15px 15px;
     display: flex;
     flex-direction: row !important;
     align-items: center;
@@ -140,7 +140,7 @@ span, h1 {
 }
   .proposal-container {
     margin-top: 10vh;
-    padding: 0 10rem;
+    padding: 0 1rem;
   margin-bottom: 50px;
    
   }
@@ -184,6 +184,8 @@ span, h1 {
   .proposal-number {
     font-weight: 600;
     margin-top: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .proposal-status {
     height: 250px;
@@ -389,9 +391,14 @@ span, h1 {
   .proposal-details {
     padding: 2rem 10rem;
   }
+  .proposal-container {
+    padding: 0 10rem;
+   
+  }
   }
 @media (min-width: 1920px) and (max-width: 2560px)  {
   .proposal-container {
+    margin-top: 5vh;
     padding: 0 15rem;
    
   }
