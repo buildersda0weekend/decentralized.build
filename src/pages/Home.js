@@ -67,7 +67,7 @@ const Home = () => {
         <Grid item xs={12} >
           <span className='governance-overview'>Governance Overview</span>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={12} sm={12} md={6} lg={6} xl={6}>
           <div className="box-1">
             <div className='created-with-bar'>
               <span>Proposal Created</span>
@@ -79,13 +79,13 @@ const Home = () => {
             </Grid>
           </div>
         </Grid>
-        <Grid xs={3}>
+        <Grid xs={12} sm={12} md={3} lg={3} xl={3} >
           <div className="box-2">
             <span>Eligible Voters</span>
             <span className='proposal-number'>{voters}</span>
           </div>
         </Grid>
-        <Grid xs={3}>
+        <Grid xs={12} sm={12} md={3} lg={3} xl={3}>
           <div className="box-3">
             <span>Ongoing Proposals</span>
             <span className='proposal-number'>{ongoingProposalCount}</span>
@@ -96,7 +96,7 @@ const Home = () => {
             <span className='governance-overview'>Treasury Overview</span>
           </Item>
         </Grid>
-        <Grid xs={8}>
+        <Grid xs={12} sm={12} md={8} lg={8} xl={8}>
           <div className="box-2">
             <span>Treasury account</span>
             <span className='proposal-number'>{treasuryAddress}</span>

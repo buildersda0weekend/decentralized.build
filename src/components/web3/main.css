@@ -222,6 +222,7 @@ span, h1 {
   }
   #proposal-list {
     margin: 20px 15px;
+    background-color: #0b0a0a;
   }
 
   .proposal-details {
@@ -243,7 +244,7 @@ span, h1 {
     white-space: nowrap;
 }
   .proposal-box {
-    background: #FFFFFF;
+    background: #0b0a0a;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
@@ -254,8 +255,8 @@ span, h1 {
 }
    .view-all-proposal {
     background-color: transparent !important;
-    color: #000 !important;
-    border: 1px solid #000 !important;
+    color: white !important;
+    border: 1px solid white !important;
     font-family: Pixeloid Sans !important;
     padding: 6px 20px !important;
     border-radius:15px !important;
@@ -339,7 +340,7 @@ span, h1 {
   font-weight: 600;
 }
 .member-box {
-  background: white;
+  background: #0b0a0a;
     padding: 20px 20px;
     border-radius: 15px;
     overflow: hidden;
