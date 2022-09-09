@@ -190,13 +190,22 @@ export const ProposalDetail = () => {
             {votingEnds ?
               <span> Voting has Ended</span>
               :
-              hasVoted ? 
-                <span className="text-center">{ votingMessage }</span>
-                :
-                <div className="yes-no-btn">
-                  <img src={yesImage} alt="" width={70} className="yes-vote" onClick={e => castVote(e, 1)} />
-                  <img src={noImage} alt="" width={70} className="no-vote" onClick={e => castVote(e, 0)} />
-                </div>
+              (
+                votingPower == 0 ?
+                  <span>You have no voting power.</span>
+                  :
+                  (
+                    hasVoted ? 
+                      <span className="text-center">{ votingMessage }</span>
+                      :
+                      (
+                        <div className="yes-no-btn">
+                          <img src={yesImage} alt="" width={70} className="yes-vote" onClick={e => castVote(e, 1)} />
+                          <img src={noImage} alt="" width={70} className="no-vote" onClick={e => castVote(e, 0)} />
+                        </div>
+                      )
+                  )
+              )
             }
              </Grid>
         </Grid>
