@@ -28,6 +28,7 @@ export const ProposalDetail = () => {
   const [votingPower, setVotingPower] = useState(0)
   const [forVote, setForVote] = useState(0)
   const [againstVote, setAgainstVote] = useState(0)
+  const [sucess, setSucess] = useState(false)
     let navigate = useNavigate ();                                                                                    
     function redirectedToProposals () {
      navigate("/proposal")
@@ -67,6 +68,9 @@ export const ProposalDetail = () => {
       setId(individualId)
       const proposalStatusCode = await governanceContract.methods.state(proposal.id).call()
       setProposalStatus(getProposalStatus(proposalStatusCode))
+      if(proposalStatusCode === 4 ) {
+        setSucess(true)
+      }
 
       const voteStatus = await governanceContract.methods.hasVoted(proposal.id, account).call()
       setHasVoted(voteStatus)
@@ -185,6 +189,9 @@ export const ProposalDetail = () => {
             </div>
             {hasVoted ? 
               <span className="text-center">{ votingMessage }</span>
+              :
+              sucess ?
+              <span className="text-center">Your proposal is successed.</span>
               :
               <div className="yes-no-btn">
                 <img src={yesImage} alt="" width={70} className="yes-vote" onClick={e => castVote(e, 1)} />
