@@ -11,6 +11,7 @@ import noImage from "../../assets/no.svg"
 import useContract from '../../hooks/contracts/useContract';
 import getProposalStatus from "../../utils/ProposalStatus";
 import { ToastContainer,toast } from 'react-toastify';
+import Web3 from "web3";
 
 const successCreated = () => toast.success("Your vote for Yes has been added.", {
   theme:'colored'
@@ -24,6 +25,9 @@ export const ProposalDetail = () => {
   const [hasVoted, setHasVoted] = useState(false)
   const [votingMessage, setVotingMessage] = useState("Already Voted!!!")
   const [proposalStatus, setProposalStatus] = useState('Pending')
+  const [votingPower, setVotingPower] = useState(0)
+  const [forVote, setForVote] = useState(0)
+  const [againstVote, setAgainstVote] = useState(0)
     let navigate = useNavigate ();                                                                                    
     function redirectedToProposals () {
      navigate("/proposal")
@@ -36,6 +40,8 @@ export const ProposalDetail = () => {
 
   const castVote = async (event, voteValue) => {
     event.preventDefault()
+
+    if (!governanceContract) return
     const voteTx = await governanceContract.methods.castVote(proposalInfo.id, voteValue).send({
       from: account
     })
@@ -64,6 +70,12 @@ export const ProposalDetail = () => {
 
       const voteStatus = await governanceContract.methods.hasVoted(proposal.id, account).call()
       setHasVoted(voteStatus)
+
+      const {againstVotes, forVotes } = await governanceContract.methods.proposalVotes(proposal.id).call()
+      const forVotesInETH = Web3.utils.fromWei(forVotes.toString(), 'ether')
+      const againstVotesInETH = Web3.utils.fromWei(againstVotes.toString(), 'ether')
+      setForVote(forVotesInETH)
+      setAgainstVote(againstVotesInETH)
     }
     const status = (e)=> {
         if(e ===  "Active") {
@@ -79,11 +91,34 @@ export const ProposalDetail = () => {
           return "Status"
         }
       }
+     
+  const loadTokenAvailable = async () => {
+    if (!tokenContract || !account) return 
+    const tokenAvailableInWei = await tokenContract.methods.balanceOf(account).call()
+    const tokenAvailableInETH = Web3.utils.fromWei(tokenAvailableInWei.toString(), 'ether')
 
+    const totalSuppyInWei = await tokenContract.methods.totalSupply().call()
+    const totalSupplyInETH = await Web3.utils.fromWei(totalSuppyInWei.toString(), 'ether')
+
+    const votingPowerRate = ((tokenAvailableInETH / totalSupplyInETH) * 100).toFixed(2)
+
+    setVotingPower(votingPowerRate)
+  }
 
    useEffect(() => {
-    getProposalDetails()
-  }, [governanceContract, account, hasVoted])
+     getProposalDetails()
+     loadTokenAvailable()
+   }, [governanceContract, account, hasVoted])
+  
+  const delegate = async (e) => {
+    e.preventDefault()
+    if (!tokenContract || !account) return
+    const tx = await tokenContract.methods.delegate(account).send({
+      from: account
+    })
+    console.log(tx)
+
+  }
 
   return (
     <>
@@ -116,9 +151,11 @@ export const ProposalDetail = () => {
         flexDirection="column"
         alignItems="center">
               <span className="proposal-detail-status" id={status(proposalStatus)}>{proposalStatus}</span>
-              <div className="vote-percentage">
+            <button onClick={e => delegate(e)}>Self Delegate</button>
+            <div className="vote-percentage">
+              <span>Your Voting Power: {votingPower}%</span>
               <div className="for-yes">
-                <span>For Yes: 2</span>
+                <span>For Yes: {forVote}</span>
                 {/* <ProgressBar
                 completed={60}
                 maxCompleted={100}
@@ -129,7 +166,7 @@ export const ProposalDetail = () => {
               /> */}
               </div>
               <div className="for-no">
-                <span>For No:  1</span>
+                <span>For No:  {againstVote}</span>
                 {/* <ProgressBar
                 completed={30}
                 isLabelVisible={false}
