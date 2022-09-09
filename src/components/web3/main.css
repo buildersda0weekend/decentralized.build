@@ -253,12 +253,11 @@ span, h1 {
     white-space: nowrap;
 }
   .proposal-box {
-    height: 30vh;
     background: #FFFFFF;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
-    padding: 0 40px;
+    padding: 20px 40px;
 }
 .proposal-heading {
   font-size: 17px;
@@ -274,10 +273,18 @@ span, h1 {
     font-size: 16px !important;
 }
 .vote-percentage {
-  margin: 0px 0 25px 0px;
+  margin: 10px 0 25px 0px;
 }
 .vote-percentage .for-yes {
   padding: 20px 0;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.vote-percentage .for-no {
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 
@@ -309,6 +316,11 @@ span, h1 {
   margin-left: 20px;
   border-radius: 6px;
 
+}
+.voting-power {
+  line-height: 1.7;
+  text-align:center;
+  display: flex;
 }
 .yes-vote:hover, .no-vote:hover {
   filter: none;

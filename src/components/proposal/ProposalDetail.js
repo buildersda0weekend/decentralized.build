@@ -137,6 +137,7 @@ export const ProposalDetail = () => {
         <Grid xs={6}  
         display="flex"
         justifyContent="end">
+          <Button  size="medium" style={{ marginRight: '10px' }} className="view-all-proposal" onClick={e => delegate(e)} type="submit">Deligate Vote</Button>
           <Button  size="medium" className="view-all-proposal" onClick={redirectedToProposals}type="submit">View all</Button>
         </Grid>
         </Grid>
@@ -155,9 +156,8 @@ export const ProposalDetail = () => {
         flexDirection="column"
         alignItems="center">
               <span className="proposal-detail-status" id={status(proposalStatus)}>{proposalStatus}</span>
-            <button onClick={e => delegate(e)}>Self Delegate</button>
             <div className="vote-percentage">
-              <span>Your Voting Power: {votingPower}%</span>
+              <span className="voting-power">Your Voting Power: {votingPower}%</span>
               <div className="for-yes">
                 <span>For Yes: {forVote}</span>
                 {/* <ProgressBar
