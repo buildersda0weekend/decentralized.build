@@ -155,7 +155,6 @@ span, h1 {
   #proposal-description {
     border: 0.9px;
     border-radius: 12px;
-    width: 100vh;
     height: 20vh;
     padding: 10px;
     font-size: 14px;
@@ -194,7 +193,7 @@ span, h1 {
     text-align: center;
     justify-content: space-around;
     flex-direction: column !important;
-    padding: 0 !important;
+    padding: 10px 30px !important;
   }
   .proposal-status:hover {
     background: linear-gradient(46deg, black, #8d65b6de);
@@ -218,24 +217,15 @@ span, h1 {
     border: 1 px solid pink  !important;
   }
   .proposal-progressBar {
-    width: 55vh !important;
-    margin: 0 auto !important;
+    /* width: 55vh !important;
+    margin: 0 auto !important; */
   }
   #proposal-list {
     margin: 20px 15px;
   }
-  @media (min-width: 1920px) and (max-width: 2560px)  {
-    .proposal-container {
-      padding: 0 15rem;
-     
-    }
-    .box-1, .box-2, .box-3 {
-      height: 22vh;
-   }
-  }
 
   .proposal-details {
-    padding: 2rem 20rem;
+    padding: 2rem 5rem;
   }
   .proposal-list-container {
     display: flex;
@@ -393,4 +383,19 @@ span, h1 {
 }
 .fund-transfer:focus {
   border: 0.1px solid white !important;
+}
+@media only screen and (min-width: 1200px) {
+  .proposal-details {
+    padding: 2rem 10rem;
+  }
+  }
+@media (min-width: 1920px) and (max-width: 2560px)  {
+  .proposal-container {
+    padding: 0 15rem;
+   
+  }
+  .box-1, .box-2, .box-3 {
+    height: 22vh;
+ }
+
 }
