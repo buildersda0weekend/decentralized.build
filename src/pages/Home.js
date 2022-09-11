@@ -70,7 +70,7 @@ const Home = () => {
         <Grid xs={12} sm={12} md={6} lg={6} xl={6} >
           <div className="box-1">
             <div className='created-with-bar'>
-              <span>Proposal Created</span>
+              <span>Proposals Created</span>
               <span className='proposal-number'>{proposalCount}</span>
             </div>
             <Grid xs={6}>
