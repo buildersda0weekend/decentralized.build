@@ -102,7 +102,7 @@ const Proposal = () => {
       console.log("Receipt Address: ", receiptAddress)
       const amount = Web3.utils.toWei(fundAmount)
       const encodedFunction = await treasuryContract.methods.releaseFunds(receiptAddress, amount.toString()).encodeABI()
-      const tx = await governanceContract.methods.createProposal([TREASURY_CONTRACT_ADDRESS], [0], [encodedFunction], description).send({
+      const tx = await governanceContract.methods.createProposal([TREASURY_CONTRACT_ADDRESS], [0], [encodedFunction], description, receiptAddress, amount).send({
         from: account
       })
       const id = tx.events.ProposalCreated.returnValues.proposalId

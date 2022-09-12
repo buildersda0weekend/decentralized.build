@@ -29,6 +29,9 @@ export const ProposalDetail = () => {
   const [forVote, setForVote] = useState(0)
   const [againstVote, setAgainstVote] = useState(0)
   const [votingEnds, setVotingEnds] = useState(false)
+  const [isExecutable, setIsExecutable] = useState(false)
+  const [isOwner, setIsOwner] = useState(false)
+
     let navigate = useNavigate ();                                                                                    
     function redirectedToProposals () {
      navigate("/proposal")
@@ -68,6 +71,8 @@ export const ProposalDetail = () => {
       setId(individualId)
       const proposalStatusCode = await governanceContract.methods.state(proposal.id).call()
       setProposalStatus(getProposalStatus(proposalStatusCode))
+      setIsExecutable(proposalStatusCode === '4')
+      setIsOwner(account === proposal.creatorAddress)
       if (proposalStatusCode !== '0' && proposalStatusCode !== '1') {
         setVotingEnds(true)
       }
@@ -107,6 +112,27 @@ export const ProposalDetail = () => {
     const votingPowerRate = ((tokenAvailableInETH / totalSupplyInETH) * 100).toFixed(2)
 
     setVotingPower(votingPowerRate)
+  }
+
+  const executeProposal = async () => {
+    const hash = Web3.utils.sha3(proposalInfo.description)
+    const encodedFunction = await treasuryContract.methods.releaseFunds(
+      proposalInfo.receiptAddress,
+      proposalInfo.amount.toString()
+    ).encodeABI()
+    await governanceContract.methods.queue(
+      [treasuryContract.options.address],
+      [0],
+      [encodedFunction],
+      hash
+    ).send({from: account})
+
+    await governanceContract.methods.execute(
+      [treasuryContract.options.address],
+      [0],
+      [encodedFunction],
+      hash
+    ).send({ from: account })
   }
 
    useEffect(() => {
@@ -188,7 +214,10 @@ export const ProposalDetail = () => {
        />
             </div>
             {votingEnds ?
-              <span> Voting has Ended</span>
+              isExecutable && isOwner ?
+                <button type="button" onClick={executeProposal}>Execute</button>
+                :
+                <span>Voting has ended </span>
               :
               (
                 votingPower == 0 ?
