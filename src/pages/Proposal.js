@@ -56,6 +56,7 @@ const Proposal = () => {
   }, [governanceContract])
 
   useEffect(() => {
+    console.log(fundAmount.length)
   }, [])
 
   function getProposalStatusColor(e) {
@@ -92,11 +93,19 @@ const Proposal = () => {
     if (receiptAddress.length < 1) {
       setAddressErr(true)
     }
+    if(fundAmount.length > 0) {
+      setFundErr(true)
+    }
+    if( fundAmount === 0) {
+      setFundErr(true)
+    }
     if (receiptAddress.length > 1 && !Web3.utils.isAddress(receiptAddress)) {
       setAddressErr(false)
       setCorrectAddress(true)
     }
+    if(fundErr) return
     try {
+      
       const amount = Web3.utils.toWei(fundAmount)
       const encodedFunction = await treasuryContract.methods.releaseFunds(receiptAddress, amount.toString()).encodeABI()
       const tx = await governanceContract.methods.createProposal([TREASURY_CONTRACT_ADDRESS], [0], [encodedFunction], description, receiptAddress, amount).send({
@@ -106,13 +115,17 @@ const Proposal = () => {
       if (id) {
         successCreated()
         getProposal()
+        setFundAmount(0)
+        setReceiptAddress("")
+        setDescription("")
       } else {
         failedCreated()
       }
-      setFundAmount(0)
-      setReceiptAddress("")
-      setDescription("")
+      
+      console.log("Fund Amount: ", fundAmount)
+      console.log("Receipt Address: ", receiptAddress)
     } catch (err) {
+      console.log(err)
     }
   }
 
@@ -126,6 +139,10 @@ const Proposal = () => {
   }
   function HandleFundAmount(event) {
     if (event.target.value.length < 1) {
+      setFundErr(true)
+      console.log(event.target.value.length)
+      console.log(event.target.value)
+    } else if (event.target.value === '0' || event.target.value < 0){
       setFundErr(true)
     } else {
       setFundErr(false)
@@ -148,7 +165,7 @@ const Proposal = () => {
       <div className="create-proposals">
         <span className="create-heading">Create a New Proposal</span>
         <span style={{ marginBottom: '10px' }}>Description</span>
-        <textarea id="proposal-description" name="description" onChange={(event) => handleDescriptionChange(event)} />
+        <textarea id="proposal-description" name="description" value={description} onChange={(event) => handleDescriptionChange(event)} />
         {textErr ?
           <span className="validation-error">please add the description.</span>
           : ""}
@@ -159,7 +176,7 @@ const Proposal = () => {
           <span className="validation-error">please add the amount.</span>
           : ""}
         <span style={{ marginTop: '20px' }}>Receipt Address :</span>
-        <OutlinedInput style={{ marginTop: '10px' }} placeholder="Please enter receipt address" inputProps={{ style: { fontFamily: 'Pixeloid Sans', color: 'white',  } }} onChange={event => HandleTreasuryAddress(event)} className="fund-transfer" error={addressErr} />
+        <OutlinedInput style={{ marginTop: '10px' }} placeholder="Please enter receipt address" inputProps={{ style: { fontFamily: 'Pixeloid Sans', color: 'white',  } }} value={receiptAddress} onChange={event => HandleTreasuryAddress(event)} className="fund-transfer" error={addressErr} />
         {addressErr ?
           <span className="validation-error">please insert the receipt address.</span>
           : correctAddress ? <span className="validation-error">Invalid receipt address.</span>
