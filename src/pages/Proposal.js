@@ -86,7 +86,6 @@ const Proposal = () => {
 
 
   async function createProposal(event) {
-    console.log(receiptAddress)
     if (description.length < 1) {
       setTextErr(true)
     }
@@ -98,8 +97,6 @@ const Proposal = () => {
       setCorrectAddress(true)
     }
     try {
-      console.log("Fund Amount: ", fundAmount)
-      console.log("Receipt Address: ", receiptAddress)
       const amount = Web3.utils.toWei(fundAmount)
       const encodedFunction = await treasuryContract.methods.releaseFunds(receiptAddress, amount.toString()).encodeABI()
       const tx = await governanceContract.methods.createProposal([TREASURY_CONTRACT_ADDRESS], [0], [encodedFunction], description, receiptAddress, amount).send({
