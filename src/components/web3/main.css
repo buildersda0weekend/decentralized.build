@@ -160,6 +160,7 @@ span, h1 {
     font-size: 14px;
     font-family: 'Pixeloid Sans';
     background: #3B3B3B;
+    color: #fff;
   }
   #proposal-description:focus-visible {
     border: none !important;
