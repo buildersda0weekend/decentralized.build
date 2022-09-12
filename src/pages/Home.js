@@ -99,7 +99,12 @@ const Home = () => {
         <Grid xs={12} sm={12} md={8} lg={8} xl={8}>
           <div className="box-2">
             <span>Treasury account</span>
+            {
+              treasuryAddress ?
             <span className='proposal-number'>{treasuryAddress}</span>
+              :
+              <span className='proposal-number'>No treasuryAddress found.</span>
+            }
           </div>
         </Grid>
         <Grid xs={12} sm={12} md={4} lg={4} xl={4}>
