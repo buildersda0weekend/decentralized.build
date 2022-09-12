@@ -112,6 +112,9 @@ const Proposal = () => {
       } else {
         failedCreated()
       }
+      setFundAmount(0)
+      setReceiptAddress("")
+      setDescription("")
     } catch (err) {
     }
   }

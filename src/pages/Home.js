@@ -103,7 +103,7 @@ const Home = () => {
               treasuryAddress ?
             <span className='proposal-number'>{treasuryAddress}</span>
               :
-              <span className='proposal-number'>No treasuryAddress found.</span>
+              <span className='proposal-number'>No Treasury address found.</span>
             }
           </div>
         </Grid>
