@@ -287,11 +287,11 @@ span, h1 {
 #pendingStatus {
   color:#4903EF ;
 }
-.defeatedStatus {
+#defeatedStatus {
   color: red;
 }
-.succeededStatus {
-  color: #00ff00;
+#succeededStatus {
+  color: #006400;
 }
 .Status {
   color: black;
