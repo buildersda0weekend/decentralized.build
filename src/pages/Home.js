@@ -14,7 +14,7 @@ const Home = () => {
   const [passRate, setPassRate] = useState(0)
   const [tokenTotalSupply, setTokenTotalSupply] = useState(0)
   const [tokenContract, governanceContract, treasuryContract] = useContract()
-  const web3 = new Web3('http://localhost:7545')
+  const web3 = new Web3('https://ropsten.infura.io/v3/fec97084f94d4f8bb2ba98a124572952')
 
   const totalProposalCount = async () => {
     if (!governanceContract || !treasuryContract) return
