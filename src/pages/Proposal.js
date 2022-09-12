@@ -22,7 +22,7 @@ const Proposal = () => {
   const [textErr, setTextErr] = useState(false)
   const [fundErr, setFundErr] = useState(false)
   const [addressErr, setAddressErr] = useState(false)
-  const [fundAmount, setFundAmount] = useState(0)
+  const [fundAmount, setFundAmount] = useState("")
   const [receiptAddress, setReceiptAddress] = useState("")
   const [correctAddress, setCorrectAddress] = useState(false)
   const [tokenContract, governanceContract, treasuryContract] = useContract()
@@ -87,23 +87,23 @@ const Proposal = () => {
 
 
   async function createProposal(event) {
+    console.log(receiptAddress)
     if (description.length < 1) {
       setTextErr(true)
     }
     if (receiptAddress.length < 1) {
       setAddressErr(true)
     }
-    if(fundAmount.length > 0) {
+    if(fundAmount.length < 1) {
       setFundErr(true)
     }
-    if( fundAmount === 0) {
+    if( fundAmount === "0") {
       setFundErr(true)
     }
     if (receiptAddress.length > 1 && !Web3.utils.isAddress(receiptAddress)) {
       setAddressErr(false)
       setCorrectAddress(true)
     }
-    if(fundErr) return
     try {
       
       const amount = Web3.utils.toWei(fundAmount)
@@ -138,12 +138,11 @@ const Proposal = () => {
     }
   }
   function HandleFundAmount(event) {
-    if (event.target.value.length < 1) {
+    if (event.target.value < 1  ) {
       setFundErr(true)
       console.log(event.target.value.length)
       console.log(event.target.value)
-    } else if (event.target.value === '0' || event.target.value < 0){
-      setFundErr(true)
+
     } else {
       setFundErr(false)
     }
